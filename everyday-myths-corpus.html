@@ -1,0 +1,234 @@
+<title>Everyday Myths Corpus</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@500;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one column of episode "signs" (denotation stacked over myth), with a ledger of emerging values beside it on wide screens */
+:root{
+  --bg:#eef1f6; --surface:#ffffff; --ink:#18202e; --muted:#5b6578; --line:#d5dbe6;
+  --accent:#2f5bd3; --accent-ink:#ffffff; --caption:#f4c430; --myth:#1d2740; --myth-ink:#eef1f6;
+  --ok:#1f8a5b; --warn:#b7791f;
+  --display:"Chivo",system-ui,sans-serif; --body:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#10141d; --surface:#181e2a; --ink:#e7ebf3; --muted:#9aa4b8; --line:#2a3242;
+  --accent:#7b9cff; --accent-ink:#0d1220; --caption:#f4c430; --myth:#0b0f17; --myth-ink:#e7ebf3;
+  --ok:#4cc38a; --warn:#e0a84a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#10141d; --surface:#181e2a; --ink:#e7ebf3; --muted:#9aa4b8; --line:#2a3242;
+  --accent:#7b9cff; --accent-ink:#0d1220; --caption:#f4c430; --myth:#0b0f17; --myth-ink:#e7ebf3;
+  --ok:#4cc38a; --warn:#e0a84a; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55}
+.wrap{max-width:1120px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px;margin-bottom:22px}
+h1{font-family:var(--display);font-weight:900;font-size:clamp(28px,5vw,44px);line-height:1;margin:0;letter-spacing:-.01em;text-wrap:balance}
+h1 span{background:var(--caption);color:#111;padding:0 .18em}
+.sub{color:var(--muted);margin:8px 0 0;max-width:60ch}
+.btn{font:600 14px var(--body);border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:9px 14px;border-radius:6px;cursor:pointer}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn:focus-visible,.chip:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:24px;align-items:start}
+@media (max-width:860px){.grid{grid-template-columns:minmax(0,1fr)}}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.chip{font:500 13px var(--body);border:1px solid var(--line);background:transparent;color:var(--muted);padding:5px 11px;border-radius:999px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.list{display:flex;flex-direction:column;gap:16px}
+.ep{background:var(--surface);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.ep-top{padding:16px 18px 14px;display:flex;flex-direction:column;gap:8px}
+.ep-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 12px}
+.num{font:500 12px var(--mono);color:var(--muted)}
+.ep h2{font:800 20px/1.2 var(--display);margin:0;flex:1 1 200px;min-width:0}
+.status{font:500 11px var(--mono);text-transform:uppercase;letter-spacing:.06em;padding:3px 8px;border-radius:4px;border:1px solid currentColor}
+.s-Idea{color:var(--muted)} .s-Scripted{color:var(--accent)} .s-Animated{color:var(--warn)} .s-Posted{color:var(--ok)}
+.lbl{font:500 11px var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);display:block;margin-bottom:2px}
+.ep p{margin:0}
+.myth{background:var(--myth);color:var(--myth-ink);padding:14px 18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px 20px}
+.myth .lbl{color:var(--caption)}
+.question{font-weight:600}
+.meta{display:flex;flex-wrap:wrap;gap:8px 16px;padding:10px 18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);align-items:center}
+.tag{font:500 12px var(--mono);background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:2px 7px;color:var(--ink)}
+.meta .actions{margin-left:auto;display:flex;gap:6px}
+.meta .btn{padding:5px 10px;font-size:13px}
+.voices{padding:0 18px 14px;font-size:14px;color:var(--muted)}
+.voices q{display:block;margin-top:4px}
+aside{position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px 18px}
+aside h3{font:800 16px var(--display);margin:0 0 4px}
+aside .hint{font-size:13px;color:var(--muted);margin:0 0 12px}
+.ledger{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.ledger li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;font-size:14px}
+.bar{grid-column:1/-1;height:6px;background:var(--bg);border-radius:3px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent)}
+.count{font:500 13px var(--mono);font-variant-numeric:tabular-nums;color:var(--muted)}
+.stats{display:flex;gap:16px;margin-top:16px;padding-top:12px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+.stats b{display:block;font:800 22px var(--display);color:var(--ink);font-variant-numeric:tabular-nums}
+.empty{background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:28px;text-align:center;color:var(--muted)}
+.note{font-size:13px;color:var(--muted);margin-top:10px}
+.sheet{position:fixed;inset:0;background:rgb(0 0 0 / .45);display:flex;align-items:flex-start;justify-content:center;overflow:auto;padding:max(24px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) 24px max(16px,env(safe-area-inset-left,0px));z-index:20}
+.sheet form{background:var(--surface);color:var(--ink);border-radius:10px;width:100%;max-width:640px;padding:20px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sheet h3{grid-column:1/-1;margin:0;font:800 20px var(--display)}
+.f{display:flex;flex-direction:column;gap:4px;min-width:0}
+.f.wide{grid-column:1/-1}
+@media (max-width:520px){.sheet form{grid-template-columns:1fr}}
+.f label{font:500 12px var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+input,select,textarea{font:15px var(--body);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:8px 10px;width:100%}
+textarea{min-height:64px;resize:vertical}
+.form-actions{grid-column:1/-1;display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.err{grid-column:1/-1;color:#c0392b;font-size:14px;margin:0}
+@media (prefers-reduced-motion:no-preference){.ep{transition:border-color .15s}.ep:hover{border-color:var(--muted)}}
+</style>
+
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Everyday <span>Myths</span> Corpus</h1>
+      <p class="sub">Each episode reads an ordinary thing in two layers, after Barthes: what it is, and what it quietly tells us. Then it asks what we should do. The values that keep coming up become the ethics.</p>
+    </div>
+    <button class="btn primary" id="addBtn" type="button" hidden>Add episode</button>
+  </header>
+
+  <div class="grid">
+    <main>
+      <div class="chips" id="chips" role="group" aria-label="Filter by status"></div>
+      <div class="list" id="list"><div class="empty">Loading episodes…</div></div>
+    </main>
+    <aside>
+      <h3>Emerging ethics</h3>
+      <p class="hint">Values ranked by how many episodes explore them.</p>
+      <ul class="ledger" id="ledger"></ul>
+      <div class="stats" id="stats"></div>
+    </aside>
+  </div>
+</div>
+
+<div class="sheet" id="sheet" hidden>
+  <form id="form" novalidate>
+    <h3 id="formTitle">New episode</h3>
+    <div class="f"><label for="f-num">Episode no.</label><input id="f-num" type="number" min="1" required></div>
+    <div class="f"><label for="f-status">Status</label><select id="f-status"><option>Idea</option><option>Scripted</option><option>Animated</option><option>Posted</option></select></div>
+    <div class="f wide"><label for="f-title">Title</label><input id="f-title" required placeholder="Everyone Has a Number"></div>
+    <div class="f wide"><label for="f-object">Everyday thing (what it is)</label><input id="f-object" placeholder="Follower counts"></div>
+    <div class="f wide"><label for="f-surface">Surface story</label><textarea id="f-surface"></textarea></div>
+    <div class="f wide"><label for="f-myth">Hidden myth (what it tells us)</label><textarea id="f-myth"></textarea></div>
+    <div class="f wide"><label for="f-question">Ethical question</label><input id="f-question"></div>
+    <div class="f"><label for="f-values">Values (comma-separated)</label><input id="f-values" placeholder="humility, quiet kindness"></div>
+    <div class="f"><label for="f-traditions">Traditions</label><input id="f-traditions" placeholder="Aristotle, Stoics"></div>
+    <div class="f"><label for="f-views">Views</label><input id="f-views" type="number" min="0"></div>
+    <div class="f"><label for="f-link">Post link</label><input id="f-link" type="url" placeholder="https://"></div>
+    <div class="f wide"><label for="f-voices">Telling audience answers (one per line)</label><textarea id="f-voices"></textarea></div>
+    <p class="err" id="formErr" hidden></p>
+    <div class="form-actions">
+      <button class="btn" type="button" id="cancelBtn">Cancel</button>
+      <button class="btn primary" type="submit" id="saveBtn">Save episode</button>
+    </div>
+  </form>
+</div>
+
+<script>
+const STATUSES=["All","Idea","Scripted","Animated","Posted"];
+let db=null, canWrite=false, episodes=[], filter="All", editingId=null, armedDelete=null;
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const list=v=>Array.isArray(v)?v:String(v||"").split(",").map(s=>s.trim()).filter(Boolean);
+
+function renderChips(){
+  $("chips").innerHTML=STATUSES.map(s=>{
+    const n=s==="All"?episodes.length:episodes.filter(e=>e.status===s).length;
+    return `<button class="chip" type="button" data-s="${s}" aria-pressed="${filter===s}">${s} · ${n}</button>`}).join("");
+}
+function renderList(){
+  const shown=episodes.filter(e=>filter==="All"||e.status===filter);
+  if(!db){$("list").innerHTML=`<div class="empty">The episode store isn't available in this view. Open the page signed in to claude.ai to see the corpus.</div>`;return}
+  if(!episodes.length){$("list").innerHTML=`<div class="empty">No episodes yet. ${canWrite?"Use <b>Add episode</b> to log the first one.":"Episodes appear here once they're logged."}</div>`;return}
+  if(!shown.length){$("list").innerHTML=`<div class="empty">No episodes with status “${esc(filter)}”.</div>`;return}
+  $("list").innerHTML=shown.map(e=>`
+  <article class="ep">
+    <div class="ep-top">
+      <div class="ep-head"><span class="num">EP ${String(e.num??"–").padStart(2,"0")}</span><h2>${esc(e.title)}</h2><span class="status s-${esc(e.status)}">${esc(e.status)}</span></div>
+      ${e.object?`<div><span class="lbl">What it is</span><p>${esc(e.object)}</p></div>`:""}
+      ${e.surface?`<div><span class="lbl">Surface story</span><p>${esc(e.surface)}</p></div>`:""}
+    </div>
+    <div class="myth">
+      <div><span class="lbl">What it tells us</span><p>${esc(e.myth||"—")}</p></div>
+      <div><span class="lbl">The question</span><p class="question">${esc(e.question||"—")}</p></div>
+    </div>
+    ${list(e.voices).length?`<div class="voices"><span class="lbl">Audience answers</span>${list(e.voices).map(v=>`<q>${esc(v)}</q>`).join("")}</div>`:""}
+    <div class="meta">
+      ${list(e.values).map(v=>`<span class="tag">${esc(v)}</span>`).join("")}
+      ${list(e.traditions).length?`<span>${esc(list(e.traditions).join(" · "))}</span>`:""}
+      ${e.views?`<span>${Number(e.views).toLocaleString()} views</span>`:""}
+      ${e.link?`<a href="${esc(e.link)}" target="_blank" rel="noopener">Open post</a>`:""}
+      ${canWrite?`<span class="actions"><button class="btn" type="button" data-edit="${esc(e.id)}">Edit</button><button class="btn" type="button" data-del="${esc(e.id)}">${armedDelete===e.id?"Confirm delete":"Delete"}</button></span>`:""}
+    </div>
+  </article>`).join("");
+}
+function renderLedger(){
+  const counts={};
+  episodes.forEach(e=>list(e.values).forEach(v=>{const k=v.toLowerCase();counts[k]=(counts[k]||0)+1}));
+  const rows=Object.entries(counts).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).slice(0,12);
+  const max=rows[0]?.[1]||1;
+  $("ledger").innerHTML=rows.length?rows.map(([k,n])=>`<li><span>${esc(k)}</span><span class="count">${n}</span><span class="bar"><i style="width:${n/max*100}%"></i></span></li>`).join(""):`<li class="hint">Tag episodes with values to see patterns form.</li>`;
+  const posted=episodes.filter(e=>e.status==="Posted");
+  const views=posted.reduce((s,e)=>s+(Number(e.views)||0),0);
+  $("stats").innerHTML=`<div><b>${episodes.length}</b>episodes</div><div><b>${posted.length}</b>posted</div><div><b>${views>=1000?(views/1000).toFixed(views>=1e5?0:1)+"K":views}</b>views</div>`;
+}
+function render(){renderChips();renderList();renderLedger()}
+
+function openForm(e){
+  editingId=e?.id||null; $("formErr").hidden=true;
+  $("formTitle").textContent=e?"Edit episode":"New episode";
+  $("f-num").value=e?.num??(Math.max(0,...episodes.map(x=>Number(x.num)||0))+1);
+  $("f-status").value=e?.status||"Idea";
+  for(const k of ["title","object","surface","myth","question","link"]) $("f-"+k).value=e?.[k]||"";
+  $("f-values").value=list(e?.values).join(", ");
+  $("f-traditions").value=list(e?.traditions).join(", ");
+  $("f-views").value=e?.views??"";
+  $("f-voices").value=list(e?.voices).join("\n");
+  $("sheet").hidden=false; $("f-title").focus();
+}
+function closeForm(){$("sheet").hidden=true;editingId=null}
+
+$("chips").addEventListener("click",ev=>{const b=ev.target.closest("[data-s]");if(b){filter=b.dataset.s;render()}});
+$("list").addEventListener("click",async ev=>{
+  const ed=ev.target.closest("[data-edit]"); if(ed){openForm(episodes.find(e=>e.id===ed.dataset.edit));return}
+  const del=ev.target.closest("[data-del]"); if(!del)return;
+  const id=del.dataset.del;
+  if(armedDelete!==id){armedDelete=id;renderList();return}
+  armedDelete=null;
+  try{await db.collection("episodes").doc(id).delete()}catch(e){alertInline(e)}
+});
+function alertInline(e){const n=document.createElement("p");n.className="note";n.textContent="Couldn't save: "+(e?.message||"try again.");$("list").prepend(n);setTimeout(()=>n.remove(),5000)}
+$("addBtn").addEventListener("click",()=>openForm(null));
+$("cancelBtn").addEventListener("click",closeForm);
+$("sheet").addEventListener("click",ev=>{if(ev.target===$("sheet"))closeForm()});
+document.addEventListener("keydown",ev=>{if(ev.key==="Escape"&&!$("sheet").hidden)closeForm()});
+$("form").addEventListener("submit",async ev=>{
+  ev.preventDefault();
+  const title=$("f-title").value.trim();
+  if(!title){$("formErr").textContent="Give the episode a title.";$("formErr").hidden=false;return}
+  const body={num:Number($("f-num").value)||0,status:$("f-status").value,title,
+    object:$("f-object").value.trim(),surface:$("f-surface").value.trim(),myth:$("f-myth").value.trim(),
+    question:$("f-question").value.trim(),values:list($("f-values").value),traditions:list($("f-traditions").value),
+    views:Number($("f-views").value)||0,link:$("f-link").value.trim(),
+    voices:$("f-voices").value.split("\n").map(s=>s.trim()).filter(Boolean),updatedAt:new Date().toISOString()};
+  $("saveBtn").disabled=true;
+  try{
+    const col=db.collection("episodes");
+    await (editingId?col.doc(editingId):col.doc()).set(body);
+    closeForm();
+  }catch(e){$("formErr").textContent=e?.code==="invalid_argument"?"You don't have permission to change this corpus.":"Couldn't save: "+(e?.message||"try again.");$("formErr").hidden=false}
+  finally{$("saveBtn").disabled=false}
+});
+
+render();
+(async()=>{
+  db=await window.claude?.use?.("db")??null;
+  const user=await window.claude?.use?.("user")??null;
+  if(!db){render();return}
+  const can=user?await user.can("data.write"):null;
+  canWrite=can!==false;
+  $("addBtn").hidden=!canWrite;
+  db.collection("episodes").orderBy("num").onSnapshot(snap=>{
+    episodes=snap.docs.map(d=>({id:d.id,...d.data()}));render();
+  },()=>{$("list").innerHTML=`<div class="empty">The episode store stopped responding. Reload the page to reconnect.</div>`});
+})();
+</script>

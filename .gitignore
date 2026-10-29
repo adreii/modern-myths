@@ -2,3 +2,5 @@ episodes/*/build/
 assets/voices/*.onnx
 assets/voices/*.bin
 __pycache__/
+.claude/settings.local.json
+assets/roblox/*_check.png
