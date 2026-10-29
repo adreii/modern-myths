@@ -4,7 +4,7 @@ Usage (run with the Python that has `bpy`, or `blender -b -P pipeline/build.py -
   python pipeline/build.py episodes/ep01_toys              # build + save .blend
   python pipeline/build.py episodes/ep01_toys --stills     # + one preview PNG per shot
   python pipeline/build.py episodes/ep01_toys --render     # + every frame (for assemble.py)
-Options: --scale 50 (resolution %), --samples 24, --fps 12, --engine CYCLES|BLENDER_EEVEE_NEXT, --style brick,
+Options: --scale 50 (resolution %), --samples 24, --fps 12, --engine CYCLES|BLENDER_EEVEE_NEXT, --style brick, --gpu,
          --only build,creator (stills for some shots), --frames 100-200
 """
 import argparse
@@ -77,11 +77,14 @@ def main():
     p.add_argument("--samples", type=int, default=24)
     p.add_argument("--fps", type=int, default=12)
     p.add_argument("--engine", default="CYCLES")
+    p.add_argument("--gpu", action="store_true", help="render Cycles on the GPU (OptiX/CUDA/HIP/Metal)")
     p.add_argument("--style", default="", help="toy | brick (default: script.yaml `style:`)")
     a = p.parse_args(argv)
     ep = (ROOT / a.episode) if not Path(a.episode).is_absolute() else Path(a.episode)
 
     sc, built, out = build(ep, a)
+    if a.gpu:
+        use_gpu(sc)
     only = set(filter(None, a.only.split(",")))
     if a.stills:
         (out / "stills").mkdir(exist_ok=True)
@@ -106,6 +109,25 @@ def main():
             sc.frame_start, sc.frame_end = max(s.f0, lo), min(s.f1, hi)
             print(f"render {s.name} {sc.frame_start}-{sc.frame_end}", flush=True)
             bpy.ops.render.render(animation=True)
+
+
+def use_gpu(sc):
+    """Switch Cycles to the best available GPU backend (OptiX first for RTX cards)."""
+    prefs = bpy.context.preferences.addons["cycles"].preferences
+    for backend in ("OPTIX", "CUDA", "HIP", "METAL", "ONEAPI"):
+        try:
+            prefs.compute_device_type = backend
+        except TypeError:
+            continue
+        prefs.get_devices()
+        gpus = [d for d in prefs.devices if d.type == backend]
+        if gpus:
+            for d in prefs.devices:
+                d.use = d.type == backend
+            sc.cycles.device = "GPU"
+            print(f"GPU render: {backend} on {', '.join(d.name for d in gpus)}", flush=True)
+            return
+    print("No GPU found; rendering on CPU", flush=True)
 
 
 def solo(built, shot):

@@ -8,7 +8,7 @@ PY=${PYTHON:-python}   # a Python 3.11 env with bpy, kokoro-onnx, soundfile, pyy
 $PY pipeline/tts.py "$EP"          # voice.wav, timing.json, captions.ass
 $PY pipeline/music.py "$EP"        # music.wav (skip if you supply your own)
 if [ "$MODE" = final ]; then
-  $PY pipeline/build.py "$EP" --render --scale 100 --samples 32
+  $PY pipeline/build.py "$EP" --render --scale 100 --samples 64 --gpu
 else
   $PY pipeline/build.py "$EP" --render --scale 50 --samples 8
 fi
