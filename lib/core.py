@@ -167,6 +167,7 @@ class Shot:
         self.coll = bpy.data.collections.new(f"{index:02d}_{name}")
         bpy.context.scene.collection.children.link(self.coll)
         self.root = self._link(bpy.data.objects.new(f"{name}_root", None))
+        self.cam = None
         self.root.location = (index * 60.0, 0, 0)
 
     # time helpers
@@ -397,4 +398,5 @@ def camera(s, pos, look, lens=40, to_pos=None, to_look=None, shake=0.0):
         move(s, tgt, 0, s.dur, to_look, frm=look, interp="LINEAR")
     m = bpy.context.scene.timeline_markers.new(s.name, frame=s.f0)
     m.camera = cam
+    s.cam = cam
     return cam, tgt

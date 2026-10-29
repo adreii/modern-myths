@@ -135,6 +135,10 @@ def solo(built, shot):
     layer = bpy.context.view_layer.layer_collection
     for s in built:
         layer.children[s.coll.name].exclude = s is not shot
+    # Blender builds the render scene from the *current* frame, and each shot's objects are
+    # hidden outside its range, so jump to the shot first or it renders empty.
+    bpy.context.scene.frame_set(shot.f0)
+    bpy.context.scene.camera = shot.cam
 
 
 if __name__ == "__main__":
