@@ -1,0 +1,42 @@
+newmtl Hero1Mtl
+Material Color
+Ka 0.827726 0.523443 0.311181
+Kd 0.827726 0.523443 0.311181
+Ks 0.0519357 0.0328435 0.0195251 
+
+d 1
+
+Ns 0
+
+map_Ka Hero1_diff.png
+map_Kd Hero1_diff.png
+map_d Hero1_diff.png
+
+newmtl Hero2Mtl
+Material Color
+Ka 0.0169881 0.0169881 0.0277553
+Kd 0.0169881 0.0169881 0.0277553
+Ks 0.00106592 0.00106592 0.00174151 
+
+d 1
+
+Ns 0
+
+map_Ka Hero1_diff.png
+map_Kd Hero1_diff.png
+map_d Hero1_diff.png
+
+newmtl Hero11Mtl
+Material Color
+Ka 0.0581872 0.101145 0.267358
+Kd 0.0581872 0.101145 0.267358
+Ks 0.00365096 0.00634636 0.0167754 
+
+d 1
+
+Ns 0
+
+map_Ka Hero1_diff.png
+map_Kd Hero1_diff.png
+map_d Hero1_diff.png
+

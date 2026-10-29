@@ -1,8 +1,13 @@
 # Real models exported from Roblox Studio (right-click → Export Selection → .obj).
 # Anything not listed falls back to the built-in procedural blocky avatars/rooms.
 #
-# characters: one R6 avatar per role (parts named Head, Torso, Left Arm, ...)
+# characters: per role, either an exported R6/R15 avatar (.obj), or an avatar name from
+#   assets/roblox/avatars.json (written by roblox/Tools/DumpAvatars.luau), which is painted
+#   in that avatar's body colours on the shared `body:` export
 #   roles used in this episode: kid, grandpa, soldier, baby
+# body: the one exported R15 body that named avatars are painted on
+# faces: each role's starting face from assets/faces/ (e.g. smile, worried_old, grin_adult);
+#   change it mid-shot with face(s, rig, "surprised", t). Named avatars default to "neutral".
 # sets: "room" replaces every procedural room; add more and place them in shots.py
 #   with set_piece(s, "<name>", loc)
 # turn: degrees to rotate imports if characters face away from camera
@@ -10,7 +15,12 @@
 
 characters:
   # kid: assets/roblox/test_r6.obj    # stand-in R6 test file; point this at your exported avatar
-  # grandpa: assets/roblox/grandpa.obj
+  # kid: Hero                         # or an avatar from avatars.json, painted on body:
+  # grandpa: Baker
+# body: assets/roblox/body_r15.obj
+faces:
+  # kid: smile
+  # grandpa: smile_old
 sets:
   # room: assets/roblox/bedroom.obj
 turn: 0

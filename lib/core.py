@@ -82,7 +82,7 @@ def world_key(frame, color, strength=1.0):
     bg.inputs[1].default_value = strength
     bg.inputs[0].keyframe_insert("default_value", frame=frame)
     bg.inputs[1].keyframe_insert("default_value", frame=frame)
-    for fc in bpy.context.scene.world.node_tree.animation_data.action.fcurves:
+    for fc in fcurves(bpy.context.scene.world.node_tree):
         for kp in fc.keyframe_points:
             kp.interpolation = "CONSTANT"
 
@@ -305,10 +305,20 @@ def key(ob, path, value, frame, interp=None):
         set_interp(ob, path, interp, frame)
 
 
+def fcurves(owner):
+    """An animated ID's F-curves, on Blender 4.2 (Action.fcurves) and 4.4+ (slotted actions)."""
+    ad = owner.animation_data
+    if not ad or not ad.action:
+        return []
+    if hasattr(ad.action, "fcurves"):
+        return ad.action.fcurves
+    from bpy_extras import anim_utils
+    bag = anim_utils.action_get_channelbag_for_slot(ad.action, ad.action_slot)
+    return bag.fcurves if bag else []
+
+
 def set_interp(ob, path, interp, frame=None):
-    if not ob.animation_data or not ob.animation_data.action:
-        return
-    for fc in ob.animation_data.action.fcurves:
+    for fc in fcurves(ob):
         if fc.data_path == path:
             for kp in fc.keyframe_points:
                 if frame is None or abs(kp.co.x - frame) < 0.5:
