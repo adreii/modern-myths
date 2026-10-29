@@ -1,0 +1,84 @@
+# Modern Myths, ep01: "The Toys That Play Themselves"
+# Each line is spoken by the TTS voice and shown as captions.
+# `shot` names a function in shots.py; consecutive lines with the same shot
+# share one continuous camera setup. `pause` = seconds of silence after the line.
+
+title: The Toys That Play Themselves
+essay: after Roland Barthes, "Toys", Mythologies (1957)
+voice: af_heart        # Kokoro voice (try: af_bella, am_puck, bf_emma, am_michael)
+speed: 1.0
+style: brick          # brick (Roblox-like blocky avatars) | toy (wooden peg dolls)
+pause: 0.30            # default gap between lines
+
+lines:
+  - shot: hook
+    say: In this world, toys play themselves.
+    pause: 0.6
+
+  - shot: kitchen
+    say: You don't play with a toy kitchen. It cooks.
+  - shot: dolls
+    say: Baby dolls change their own diapers.
+  - shot: cars
+    say: Toy cars drive to work, sit in traffic, and honk at each other.
+  - shot: watch
+    say: And kids? Kids just sit on the carpet and watch.
+  - shot: rich
+    say: The fancier the toy, the less you have to do. Rich kids don't even watch. Their toys watch them.
+    pause: 0.5
+
+  - shot: birthday
+    say: For my birthday, everyone got me something amazing.
+  - shot: office
+    say: A toy office that does its own taxes.
+  - shot: soldier
+    say: A toy soldier that already knew how to salute.
+    pause: 0.5
+
+  - shot: grandpa
+    say: Then Grandpa gave me a box.
+  - shot: blocks
+    say: Inside were blocks. Plain, wooden blocks.
+  - shot: blocks
+    say: They didn't beep. They didn't move. They didn't do anything.
+    pause: 0.6
+  - shot: broken
+    say: "\"They're broken,\" I said."
+  - shot: broken
+    say: "Grandpa smiled. \"No, kiddo. They're waiting.\""
+    pause: 0.5
+  - shot: underbed
+    say: I hid them under my bed. Waiting for what?
+    pause: 0.5
+
+  - shot: night
+    say: That night, my kitchen made soup. My office worked late. My soldier marched off to a war he never picked.
+  - shot: bored
+    say: And I was bored. So, so bored.
+    pause: 0.4
+  - shot: build
+    say: So I took out one block. Then another.
+  - shot: build
+    say: I built a wall. Then a tower. Then a tower with a door, and a dragon on top, and a moat full of sharks wearing hats.
+    pause: 0.5
+  - shot: creator
+    say: Nobody had ever made that before. Not the factory. Not the commercials. Me.
+    pause: 0.6
+
+  - shot: morning
+    say: The next morning, my kitchen was still making the same soup.
+  - shot: rocket
+    say: And my blocks? My blocks were a spaceship.
+    pause: 0.6
+  - shot: ending
+    say: So now I know. Some toys play for you. And some toys wait, for you to show up.
+    pause: 0.8
+
+  - shot: card
+    hold: 4.5
+    card: |
+      A toy that does everything
+      makes you a user.
+
+      A toy that does nothing
+      makes you a creator.

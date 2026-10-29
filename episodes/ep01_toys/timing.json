@@ -1,0 +1,199 @@
+{
+  "title": "The Toys That Play Themselves",
+  "essay": "after Roland Barthes, \"Toys\", Mythologies (1957)",
+  "total": 85.528,
+  "lines": [
+    {
+      "shot": "hook",
+      "text": "In this world, toys play themselves.",
+      "card": null,
+      "start": 0.25,
+      "end": 2.284,
+      "next": 2.884
+    },
+    {
+      "shot": "kitchen",
+      "text": "You don't play with a toy kitchen. It cooks.",
+      "card": null,
+      "start": 2.884,
+      "end": 5.305,
+      "next": 5.605
+    },
+    {
+      "shot": "dolls",
+      "text": "Baby dolls change their own diapers.",
+      "card": null,
+      "start": 5.605,
+      "end": 7.666,
+      "next": 7.966
+    },
+    {
+      "shot": "cars",
+      "text": "Toy cars drive to work, sit in traffic, and honk at each other.",
+      "card": null,
+      "start": 7.966,
+      "end": 11.524,
+      "next": 11.824
+    },
+    {
+      "shot": "watch",
+      "text": "And kids? Kids just sit on the carpet and watch.",
+      "card": null,
+      "start": 11.824,
+      "end": 14.421,
+      "next": 14.721
+    },
+    {
+      "shot": "rich",
+      "text": "The fancier the toy, the less you have to do. Rich kids don't even watch. Their toys watch them.",
+      "card": null,
+      "start": 14.721,
+      "end": 20.238,
+      "next": 20.738
+    },
+    {
+      "shot": "birthday",
+      "text": "For my birthday, everyone got me something amazing.",
+      "card": null,
+      "start": 20.738,
+      "end": 23.522,
+      "next": 23.822
+    },
+    {
+      "shot": "office",
+      "text": "A toy office that does its own taxes.",
+      "card": null,
+      "start": 23.822,
+      "end": 25.916,
+      "next": 26.216
+    },
+    {
+      "shot": "soldier",
+      "text": "A toy soldier that already knew how to salute.",
+      "card": null,
+      "start": 26.216,
+      "end": 28.747,
+      "next": 29.247
+    },
+    {
+      "shot": "grandpa",
+      "text": "Then Grandpa gave me a box.",
+      "card": null,
+      "start": 29.247,
+      "end": 30.952,
+      "next": 31.252
+    },
+    {
+      "shot": "blocks",
+      "text": "Inside were blocks. Plain, wooden blocks.",
+      "card": null,
+      "start": 31.252,
+      "end": 33.804,
+      "next": 34.104
+    },
+    {
+      "shot": "blocks",
+      "text": "They didn't beep. They didn't move. They didn't do anything.",
+      "card": null,
+      "start": 34.104,
+      "end": 36.879,
+      "next": 37.479
+    },
+    {
+      "shot": "broken",
+      "text": "\"They're broken,\" I said.",
+      "card": null,
+      "start": 37.479,
+      "end": 38.902,
+      "next": 39.202
+    },
+    {
+      "shot": "broken",
+      "text": "Grandpa smiled. \"No, kiddo. They're waiting.\"",
+      "card": null,
+      "start": 39.202,
+      "end": 41.817,
+      "next": 42.317
+    },
+    {
+      "shot": "underbed",
+      "text": "I hid them under my bed. Waiting for what?",
+      "card": null,
+      "start": 42.317,
+      "end": 44.717,
+      "next": 45.217
+    },
+    {
+      "shot": "night",
+      "text": "That night, my kitchen made soup. My office worked late. My soldier marched off to a war he never picked.",
+      "card": null,
+      "start": 45.217,
+      "end": 51.409,
+      "next": 51.709
+    },
+    {
+      "shot": "bored",
+      "text": "And I was bored. So, so bored.",
+      "card": null,
+      "start": 51.709,
+      "end": 53.688,
+      "next": 54.088
+    },
+    {
+      "shot": "build",
+      "text": "So I took out one block. Then another.",
+      "card": null,
+      "start": 54.088,
+      "end": 56.261,
+      "next": 56.561
+    },
+    {
+      "shot": "build",
+      "text": "I built a wall. Then a tower. Then a tower with a door, and a dragon on top, and a moat full of sharks wearing hats.",
+      "card": null,
+      "start": 56.561,
+      "end": 63.566,
+      "next": 64.066
+    },
+    {
+      "shot": "creator",
+      "text": "Nobody had ever made that before. Not the factory. Not the commercials. Me.",
+      "card": null,
+      "start": 64.066,
+      "end": 68.701,
+      "next": 69.301
+    },
+    {
+      "shot": "morning",
+      "text": "The next morning, my kitchen was still making the same soup.",
+      "card": null,
+      "start": 69.301,
+      "end": 72.372,
+      "next": 72.672
+    },
+    {
+      "shot": "rocket",
+      "text": "And my blocks? My blocks were a spaceship.",
+      "card": null,
+      "start": 72.672,
+      "end": 75.109,
+      "next": 75.709
+    },
+    {
+      "shot": "ending",
+      "text": "So now I know. Some toys play for you. And some toys wait, for you to show up.",
+      "card": null,
+      "start": 75.709,
+      "end": 80.228,
+      "next": 81.028
+    },
+    {
+      "shot": "card",
+      "text": "",
+      "card": "A toy that does everything\nmakes you a user.\n\nA toy that does nothing\nmakes you a creator.\n",
+      "start": 81.028,
+      "end": 85.528,
+      "next": 85.528
+    }
+  ]
+}

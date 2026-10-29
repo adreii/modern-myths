@@ -1,0 +1,6 @@
+# Python 3.11 (bpy 4.2 wheels are cp311)
+bpy==4.2.0
+kokoro-onnx
+soundfile
+numpy
+pyyaml

@@ -1,0 +1,4 @@
+episodes/*/build/
+assets/voices/*.onnx
+assets/voices/*.bin
+__pycache__/
