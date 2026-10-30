@@ -4,3 +4,9 @@ assets/voices/*.bin
 __pycache__/
 .claude/settings.local.json
 assets/roblox/*_check.png
+.venv/
+.deps/
+
+assets/ext/*/
+lookdev/*.blend
+lookdev/*.blend1

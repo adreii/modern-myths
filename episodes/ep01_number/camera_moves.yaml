@@ -1,0 +1,87 @@
+# Camera sphere moves you made by hand (pipeline/grab_looks.py); frames from the shot's start.
+s02_rig:
+- - 0.0
+  - 6.3676
+  - 68.4323
+  - 34.0769
+  - SINE
+  - EASE_IN_OUT
+- - 56.0
+  - 3.0665
+  - 64.2957
+  - 32.48
+  - SINE
+  - EASE_IN_OUT
+s05_lookat:
+- - 0.0
+  - -18.3851
+  - 66.9535
+  - 9.0
+  - LINEAR
+  - AUTO
+s05_rig:
+- - 0.0
+  - -90.0
+  - 60.5
+  - 3.4167
+  - LINEAR
+  - AUTO
+- - 66.0
+  - -86.382
+  - 59.7005
+  - 3.8494
+  - BEZIER
+  - AUTO
+s06_lookat:
+- - 0.0
+  - -46.0
+  - 71.5
+  - 4.0
+  - SINE
+  - EASE_IN_OUT
+- - 96.0
+  - -43.4
+  - 70.4
+  - 2.5146
+  - SINE
+  - EASE_IN_OUT
+s06_rig:
+- - 0.0
+  - -31.7132
+  - 62.9534
+  - 2.9766
+  - SINE
+  - EASE_IN_OUT
+- - 96.0
+  - -34.3767
+  - 65.0137
+  - 2.1
+  - SINE
+  - EASE_IN_OUT
+s14_lookat:
+- - 0.0
+  - 700.0
+  - -517.5
+  - 11.431
+  - LINEAR
+  - AUTO
+s15_lookat:
+- - 0.0
+  - -11.4608
+  - 65.0
+  - 6.5
+  - LINEAR
+  - AUTO
+s15_rig:
+- - 0.0
+  - -46.5627
+  - 56.7403
+  - 6.8
+  - SINE
+  - EASE_IN_OUT
+- - 89.0
+  - -74.0
+  - 62.5
+  - 6.8
+  - SINE
+  - EASE_IN_OUT

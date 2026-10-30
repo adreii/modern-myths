@@ -57,9 +57,9 @@ def new_scene(fps=12, res=(1080, 1920), scale=100, engine="CYCLES", samples=24, 
     sc.render.engine = engine
     sc.render.film_transparent = False
     sc.render.use_persistent_data = True
-    if style == "brick":  # saturated game colours
-        sc.view_settings.view_transform = "Standard"
-        sc.view_settings.look = "Medium Contrast"
+    if style == "brick":  # the user's art direction (2026-10-30): AgX, no look
+        sc.view_settings.view_transform = "AgX"
+        sc.view_settings.look = "None"
         sc.view_settings.exposure = -0.9
     else:
         sc.view_settings.view_transform = "AgX"
@@ -69,6 +69,8 @@ def new_scene(fps=12, res=(1080, 1920), scale=100, engine="CYCLES", samples=24, 
         sc.cycles.use_denoising = True
         sc.cycles.max_bounces = 4
         sc.cycles.device = "CPU"
+    elif engine.startswith("BLENDER_EEVEE"):
+        sc.eevee.taa_render_samples = samples
     world = bpy.data.worlds.new("World")
     world.use_nodes = True
     sc.world = world
@@ -157,23 +159,31 @@ def baseplate_mat(color):
 class Shot:
     """Build context for one shot. Times are in seconds relative to shot start."""
 
-    def __init__(self, name, index, start, end, fps, lines):
-        self.name, self.fps = name, fps
+    def __init__(self, name, index, start, end, fps, lines, at_origin=False):
+        self.name, self.fps, self.index = name, fps, index
         self.t0, self.t1 = start, end
         self.dur = end - start
         self.f0 = round(start * fps) + 1
         self.f1 = max(round(end * fps), self.f0)
         self.lines = [dict(l, start=l["start"] - start, end=l["end"] - start) for l in lines]
+        self.after = []  # callables build.py runs once every shot exists (e.g. Cam.declip)
         self.coll = bpy.data.collections.new(f"{index:02d}_{name}")
         bpy.context.scene.collection.children.link(self.coll)
         self.root = self._link(bpy.data.objects.new(f"{name}_root", None))
         self.cam = None
-        self.root.location = (index * 60.0, 0, 0)
+        # extra lights for this shot only: anything put in here is shown just during the shot
+        # (keyed by finish(), or by the key_shot_lights text in the .blend for lights added by hand)
+        self.lights = bpy.data.collections.new(f"{name}_Lights")
+        self.lights["shot"], self.lights["f0"], self.lights["f1"] = name, self.f0, self.f1
+        self.coll.children.link(self.lights)
+        # own stage far from the others, or the origin when every shot shares one town
+        self.root.location = (0, 0, 0) if at_origin else (index * 60.0, 0, 0)
 
     # time helpers
     def f(self, t):
-        """Seconds (shot-relative) -> absolute frame."""
-        return self.f0 + round(t * self.fps)
+        """Seconds (shot-relative) -> absolute frame, never past the shot's last visible frame
+        (so a move's end key, e.g. the camera's B point, sits on a frame you can see it on)."""
+        return min(self.f0 + round(t * self.fps), self.f1)
 
     def line(self, i):
         return self.lines[i]
@@ -205,13 +215,25 @@ class Shot:
     def empty(self, name="empty", loc=(0, 0, 0), parent=None):
         return self.adopt(bpy.data.objects.new(name, None), parent, loc)
 
+    def hide(self, ob, hidden=True):
+        """Hide (or show) a shared object, e.g. a town wall, only during this shot."""
+        for prop in ("hide_render", "hide_viewport"):
+            for frame, val in ((self.f0 - 1, not hidden), (self.f0, hidden), (self.f1 + 1, not hidden)):
+                setattr(ob, prop, val)
+                ob.keyframe_insert(prop, frame=frame)
+
     def finish(self):
-        """Hide every object of this shot outside its time range."""
-        for ob in list(self.coll.objects):
-            for prop in ("hide_render", "hide_viewport"):
-                for frame, val in ((self.f0 - 1, True), (self.f0, False), (self.f1 + 1, True)):
-                    setattr(ob, prop, val)
-                    ob.keyframe_insert(prop, frame=frame)
+        """Hide every object of this shot (its lights collection too) outside its time range."""
+        for ob in list(self.coll.objects) + list(self.lights.objects):  # (all_objects can be stale mid-build)
+            key_shown(ob, self.f0, self.f1)
+
+
+def key_shown(ob, f0, f1):
+    """Key an object visible from frame f0 to f1 and hidden either side."""
+    for prop in ("hide_render", "hide_viewport"):
+        for frame, val in ((f0 - 1, True), (f0, False), (f1 + 1, True)):
+            setattr(ob, prop, val)
+            ob.keyframe_insert(prop, frame=frame)
 
 
 # --- primitives (all return objects parented to the shot stage) -------------------
@@ -384,7 +406,9 @@ def wobble(s, ob, t0, t1, deg=8, period=0.5, axis=1, base_deg=None):
 def camera(s, pos, look, lens=40, to_pos=None, to_look=None, shake=0.0):
     """Shot camera bound to a timeline marker; optional slow dolly from pos to to_pos."""
     cd = bpy.data.cameras.new(f"{s.name}_cam")
+    cd["shot"] = s.name
     cd.lens = lens
+    cd.clip_end = 9000  # whole-town shots and the mountains behind
     cd.dof.use_dof = True
     cd.dof.aperture_fstop = 2.8
     cam = s.adopt(bpy.data.objects.new(cd.name, cd), None, pos)

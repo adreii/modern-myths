@@ -1,5 +1,7 @@
 # Modern Myths
 
+> **Current episodes are made in Blender 5.2** (see `HANDOFF.md` for commands and setup). EP01 lives in `episodes/ep01_number/`; `episodes/ep01_toys/` is the older pipeline test.
+
 Absurdist animated Shorts built on Roland Barthes' *Mythologies*: one impossible
 rule, one small story, one lesson. Everything is generated from text: a script
 becomes narration, the narration timing drives a Blender scene built in Python,
@@ -38,7 +40,7 @@ curl -LO https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-fil
 curl -LO https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/voices-v1.0.bin
 ```
 
-Captions use the **Inter Black** and **DejaVu Serif** fonts. Install them, or change the
+Captions use the **Arial Black** and **Georgia** fonts (both ship with Windows). To use others, change the
 font names in `ASS_HEADER` in `pipeline/tts.py`.
 
 ## Make an episode

@@ -1,0 +1,30 @@
+# EP01 cast: every avatar is the one exported R15 body, painted in its Studio colours
+# from assets/roblox/avatars.json (see lib/imported.py and roblox/Tools/DumpAvatars.luau).
+# faces: starting expression from assets/faces/ (change any time; shots switch them with face()).
+
+body: assets/roblox/body_r15.obj
+characters:
+  hero: Hero
+  baker: Baker
+  influencer: Influencer
+  kid: Kid
+  crowd_1: Crowd_1
+  crowd_2: Crowd_2
+  crowd_3: Crowd_3
+  crowd_4: Crowd_4
+  crowd_5: Crowd_5
+  crowd_6: Crowd_6
+  crowd_7: Crowd_7
+faces:
+  hero: smile
+  baker: smile_old
+  influencer: smug_adult
+  kid: grin
+  crowd_1: neutral_adult
+  crowd_2: smile_adult
+  crowd_3: neutral_old
+  crowd_4: smile_adult
+  crowd_5: neutral_adult
+  crowd_6: smile_old
+  crowd_7: neutral_adult
+turn: 0

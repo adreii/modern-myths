@@ -17,7 +17,7 @@ LEAD_IN = 0.25  # silence before the first line
 
 
 def load_script(ep):
-    return yaml.safe_load((ep / "script.yaml").read_text())
+    return yaml.safe_load((ep / "script.yaml").read_text(encoding="utf-8"))
 
 
 def synth(lines, voice, speed):
@@ -62,7 +62,8 @@ def main(ep):
         t += dur + pause
     voice = np.concatenate(chunks)
     sf.write(ep / "voice.wav", voice, sr)
-    out = {"title": s["title"], "essay": s["essay"], "total": round(len(voice) / sr, 3), "lines": timing}
+    out = {"title": s["title"], "essay": s["essay"], "total": round(len(voice) / sr, 3), "lines": timing,
+           "highlight": s.get("highlight", [])}
     (ep / "timing.json").write_text(json.dumps(out, indent=2))
     write_ass(ep / "captions.ass", out)
     print(f"voice.wav {out['total']:.1f}s, {len(timing)} lines")
@@ -97,13 +98,24 @@ WrapStyle: 0
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Cap,Inter Black,92,&H00FFFFFF,&H000000FF,&H00201810,&H64000000,-1,0,0,0,100,100,0,0,1,7,3,2,70,70,560,1
-Style: Card,DejaVu Serif,74,&H00E8F4FA,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,5,90,90,0,1
-Style: Credit,DejaVu Serif,40,&H0090A8B8,&H000000FF,&H00000000,&H00000000,0,1,0,0,100,100,0,0,1,0,0,2,90,90,360,1
+Style: Cap,Arial Black,88,&H00FFFFFF,&H000000FF,&H00201810,&H64000000,-1,0,0,0,100,100,0,0,1,7,3,2,70,70,560,1
+Style: Card,Georgia,74,&H00E8F4FA,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,5,90,90,0,1
+Style: Credit,Georgia,40,&H0090A8B8,&H000000FF,&H00000000,&H00000000,0,1,0,0,100,100,0,0,1,0,0,2,90,90,360,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 """
+
+
+YELLOW = r"{\c&H4AD2FF&}"  # #FFD24A, the number-tag yellow (ASS colours are BGR)
+
+
+def highlight(text, phrases):
+    """Colour every listed phrase (e.g. the numbers) yellow, whole words only."""
+    if not phrases:
+        return text
+    alts = "|".join(re.escape(p.upper()) for p in sorted(phrases, key=len, reverse=True))  # longest wins
+    return re.sub(rf"(?<![\w-])(?:{alts})(?![\w-])", lambda m: YELLOW + m.group(0) + r"{\c}", text)
 
 
 def write_ass(path, timing):
@@ -115,15 +127,17 @@ def write_ass(path, timing):
             ev.append(f"Dialogue: 0,{ts(ln['start'])},{ts(end)},Card,,0,0,0,,{{\\fad(600,0)}}{body}")
             ev.append(f"Dialogue: 0,{ts(ln['start'] + 1.0)},{ts(end)},Credit,,0,0,0,,{{\\fad(600,0)}}{timing['essay']}")
             continue
+        if not ln["text"].strip():  # a silent hold (e.g. a card with no text): picture only
+            continue
         chunks = chunk_words(ln["text"])
         weights = [len(c) + 3 for c in chunks]
         t, span = ln["start"], ln["end"] - ln["start"]
         for c, w in zip(chunks, weights):
             d = span * w / sum(weights)
             # small pop-in on each chunk
-            ev.append(f"Dialogue: 0,{ts(t)},{ts(t + d)},Cap,,0,0,0,,{{\\fscx92\\fscy92\\t(0,80,\\fscx100\\fscy100)}}{c.upper()}")
+            ev.append(f"Dialogue: 0,{ts(t)},{ts(t + d)},Cap,,0,0,0,,{{\\fscx92\\fscy92\\t(0,80,\\fscx100\\fscy100)}}{highlight(c.upper(), timing.get('highlight', []))}")
             t += d
-    Path(path).write_text(ASS_HEADER + "\n".join(ev) + "\n")
+    Path(path).write_text(ASS_HEADER + "\n".join(ev) + "\n", encoding="utf-8")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,84 @@
+# Hand-made light per shot, on top of the lighting presets. Written by pipeline/grab_looks.py from
+# the .blend you edited (only values that differ from the preset); read by shots.py on every build.
+# Per shot: sun (rotation in degrees, strength, color, angle) and world (the shot's WG_ group inputs).
+s01:
+  sun:
+    color:
+    - 1.0
+    - 1.0
+    - 1.0
+    rotation:
+    - 72.7
+    - -1.25
+    - 65.26
+    strength: 10.0
+  world:
+    HDRI Mix: 0.15
+    HDRI Rotation: 435.4
+    Sky Strength: 0.5
+s02:
+  sun:
+    strength: 8.02
+s03:
+  sun:
+    strength: 6.83
+s05:
+  world:
+    Sky Strength: 0.5
+s06:
+  sun:
+    rotation:
+    - 48.54
+    - 8.14
+    - 107.57
+  world:
+    HDRI Strength: 0.25
+    Sky Strength: 0.5
+s07:
+  sun:
+    strength: 7.92
+  world:
+    Ambient Color:
+    - 0.2627
+    - 0.2627
+    - 0.5882
+    - 1.0
+    HDRI Mix: 0.09
+    Horizon:
+    - 0.4332
+    - 0.608
+    - 1.0
+    - 1.0
+    Zenith:
+    - 0.0891
+    - 0.17
+    - 0.3515
+    - 1.0
+s08:
+  sun:
+    strength: 5.69
+s10:
+  sun:
+    rotation:
+    - 57.51
+    - -30.35
+    - -32.2
+s12:
+  sun:
+    rotation:
+    - 84.07
+    - -1.23
+    - -67.52
+    strength: 6.896
+s14:
+  sun:
+    rotation:
+    - 88.68
+    - 0.96
+    - 58.49
+s17:
+  sun:
+    rotation:
+    - 85.0
+    - -0.0
+    - 64.97

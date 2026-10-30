@@ -87,6 +87,41 @@ def _import(path, normalize_height=None):
     return objs
 
 
+def _drop_eyes(o):
+    """Remove the export's eye ovals from a head mesh (once; copies share it): the small loose
+    pieces on the front of the face at eye height. The face plane draws the eyes instead. The
+    mouth and the rest of the head stay. Frame from _import: height 1, facing -Y."""
+    if o.get("eyes_dropped"):
+        return
+    import bmesh
+    bm = bmesh.new()
+    bm.from_mesh(o.data)
+    seen, drop = set(), []
+    for v in bm.verts:
+        if v in seen:
+            continue
+        comp, stack = [], [v]
+        seen.add(v)
+        while stack:
+            x = stack.pop()
+            comp.append(x)
+            for e in x.link_edges:
+                y = e.other_vert(x)
+                if y not in seen:
+                    seen.add(y)
+                    stack.append(y)
+        ys = [c.co.y for c in comp]
+        zs = [c.co.z for c in comp]
+        if len(comp) < 100 and max(ys) < -0.09 and min(zs) > 0.88 and max(zs) < 0.99:
+            drop += comp
+    if drop:
+        bmesh.ops.delete(bm, geom=drop, context="VERTS")
+        bm.to_mesh(o.data)
+        o.data.update()
+    bm.free()
+    o["eyes_dropped"] = len(drop)
+
+
 def _part_of(o):
     """Which body part a mesh is, "skip" for the invisible root, None for accessories."""
     n = o.name.split(".")[0].lower().replace(" ", "").replace("_", "")
@@ -200,6 +235,8 @@ def roblox_avatar(s, style, loc=(0, 0, 0), h=1.0, rot_z=0, parent=None):
             s.adopt(c, joints[joint], tuple(-pivots[joint]))
         return c
 
+    for o in groups["head"]:  # the face plane does the eyes
+        _drop_eyes(o)
     made = {k: [attach(o, owner.get(k)) for o in g] for k, g in groups.items()}
     # accessories (hair, hats, faces as separate meshes): ride on the closest part
     for o in src:
@@ -208,11 +245,14 @@ def roblox_avatar(s, style, loc=(0, 0, 0), h=1.0, rot_z=0, parent=None):
         lo, hi = _bounds(o)
         attach(o, "neck" if (lo.z + hi.z) / 2 > torso_top else None)
     rig = Rig(root, made["torso"][0], joints["neck"], made["head"][0], joints["arm_l"], joints["arm_r"], h)
+    rig.leg_l, rig.leg_r = joints["leg_l"], joints["leg_r"]  # hip joints, for lib/acting.py
     # face decals hang on the neck joint, just in front of the head (characters face -Y)
     lo, hi = b["head"]
     size = min(hi.x - lo.x, hi.z - lo.z) * 0.9
     rig.face_at = (joints["neck"], Vector(((lo.x + hi.x) / 2, lo.y - 0.004, (lo.z + hi.z) / 2)) - pivots["neck"], size)
     rig.faces = {}
+    # the head mesh's origin sits at the feet, so cameras aim at this point instead
+    rig.head_centre = s.empty(f"{root.name}_head", tuple((lo + hi) / 2 - pivots["neck"]), joints["neck"])
     default = CAST["faces"].get(style) or (look or {}).get("face") or ("neutral" if look else None)
     if default:
         face(s, rig, default)
@@ -247,6 +287,7 @@ def _face_plane(s, rig, name):
     me.materials.append(m)
     ob = s.adopt(bpy.data.objects.new(f"face_{name}", me), joint, tuple(loc))
     ob.scale = (0, 0, 0)  # hidden until face() shows it
+    ob.visible_shadow = False  # a face card never casts a shadow
     return ob
 
 

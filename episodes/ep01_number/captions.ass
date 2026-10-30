@@ -1,0 +1,60 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Cap,Arial Black,88,&H00FFFFFF,&H000000FF,&H00201810,&H64000000,-1,0,0,0,100,100,0,0,1,7,3,2,70,70,560,1
+Style: Card,Georgia,74,&H00E8F4FA,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,5,90,90,0,1
+Style: Credit,Georgia,40,&H0090A8B8,&H000000FF,&H00000000,&H00000000,0,1,0,0,100,100,0,0,1,0,0,2,90,90,360,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.25,0:00:01.03,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}IN MY TOWN,
+Dialogue: 0,0:00:01.03,0:00:02.36,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}EVERYONE HAS A NUMBER
+Dialogue: 0,0:00:02.36,0:00:03.92,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}FLOATING OVER THEIR HEAD.
+Dialogue: 0,0:00:04.27,0:00:05.70,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}NOBODY REMEMBERS WHO PUT
+Dialogue: 0,0:00:05.70,0:00:06.33,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}IT THERE.
+Dialogue: 0,0:00:06.68,0:00:07.87,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}MINE WAS {\c&H4AD2FF&}TWO{\c} {\c&H4AD2FF&}HUNDRED{\c}
+Dialogue: 0,0:00:07.87,0:00:08.60,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}AND {\c&H4AD2FF&}TWELVE{\c}.
+Dialogue: 0,0:00:08.90,0:00:09.48,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}LOW.
+Dialogue: 0,0:00:09.79,0:00:10.66,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}EMBARRASSING.
+Dialogue: 0,0:00:11.01,0:00:12.29,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}THE BAKER HAD {\c&H4AD2FF&}NINE{\c}.
+Dialogue: 0,0:00:12.59,0:00:13.53,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}JUST {\c&H4AD2FF&}NINE{\c}.
+Dialogue: 0,0:00:13.88,0:00:15.09,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}BUT EVERY MORNING,
+Dialogue: 0,0:00:15.09,0:00:16.52,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}BEFORE ANYONE WOKE UP,
+Dialogue: 0,0:00:16.67,0:00:17.76,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}SHE LEFT BREAD ON
+Dialogue: 0,0:00:17.76,0:00:19.19,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}THE DOORSTEPS OF HOUSES
+Dialogue: 0,0:00:19.19,0:00:20.34,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}WITH NO LIGHTS ON.
+Dialogue: 0,0:00:20.69,0:00:21.93,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}THE GUY WITH {\c&H4AD2FF&}FIFTY{\c}
+Dialogue: 0,0:00:21.93,0:00:23.40,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}{\c&H4AD2FF&}THOUSAND{\c} NEVER SAID HI
+Dialogue: 0,0:00:23.40,0:00:24.17,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}TO ANYONE.
+Dialogue: 0,0:00:24.52,0:00:25.66,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}HE WAS BUSY MAKING
+Dialogue: 0,0:00:25.66,0:00:26.76,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}HIS NUMBER GO UP.
+Dialogue: 0,0:00:27.26,0:00:28.15,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}SO I DID WHAT
+Dialogue: 0,0:00:28.15,0:00:29.09,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}EVERYONE DOES.
+Dialogue: 0,0:00:29.44,0:00:30.74,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}I STARTED PERFORMING.
+Dialogue: 0,0:00:31.09,0:00:32.08,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}{\c&H4AD2FF&}NINE{\c} {\c&H4AD2FF&}HUNDRED{\c}.
+Dialogue: 0,0:00:32.33,0:00:33.42,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}{\c&H4AD2FF&}THREE{\c} {\c&H4AD2FF&}THOUSAND{\c}.
+Dialogue: 0,0:00:33.67,0:00:34.68,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}{\c&H4AD2FF&}TEN{\c} {\c&H4AD2FF&}THOUSAND{\c}.
+Dialogue: 0,0:00:35.18,0:00:36.20,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}AND THE BIGGER IT
+Dialogue: 0,0:00:36.20,0:00:36.56,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}GOT,
+Dialogue: 0,0:00:36.56,0:00:37.99,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}THE FEWER PEOPLE ACTUALLY
+Dialogue: 0,0:00:37.99,0:00:38.80,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}KNEW MY NAME.
+Dialogue: 0,0:00:39.40,0:00:40.28,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}ONE MORNING,
+Dialogue: 0,0:00:40.68,0:00:41.82,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}THERE WAS NO BREAD.
+Dialogue: 0,0:00:42.32,0:00:43.55,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}THE BAKER WAS SICK.
+Dialogue: 0,0:00:44.05,0:00:45.07,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}AND I REALIZED NO
+Dialogue: 0,0:00:45.07,0:00:46.23,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}NUMBER IN TOWN COULD
+Dialogue: 0,0:00:46.23,0:00:47.30,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}HAVE TOLD ME THAT.
+Dialogue: 0,0:00:47.80,0:00:48.67,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}SO I BROUGHT HER
+Dialogue: 0,0:00:48.67,0:00:49.09,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}BREAD.
+Dialogue: 0,0:00:50.69,0:00:52.19,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}MY NUMBER DIDN'T MOVE.
+Dialogue: 0,0:00:52.59,0:00:53.93,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}NOT EVEN BY ONE.
+Dialogue: 0,0:00:54.93,0:00:56.09,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}TURNS OUT THE NUMBER
+Dialogue: 0,0:00:56.09,0:00:57.35,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}NEVER MEASURED WHAT WE
+Dialogue: 0,0:00:57.35,0:00:57.91,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}THOUGHT.
+Dialogue: 0,0:00:58.41,0:00:59.59,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}IT ONLY MEASURED WHO
+Dialogue: 0,0:00:59.59,0:01:00.41,Cap,,0,0,0,,{\fscx92\fscy92\t(0,80,\fscx100\fscy100)}WAS WATCHING.

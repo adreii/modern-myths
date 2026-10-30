@@ -1,0 +1,234 @@
+{
+  "title": "Everyone Has a Number",
+  "essay": "after Roland Barthes, Mythologies (1957)",
+  "total": 64.407,
+  "lines": [
+    {
+      "shot": "s01",
+      "text": "In my town, everyone has a number floating over their head.",
+      "card": null,
+      "start": 0.25,
+      "end": 3.921,
+      "next": 4.271
+    },
+    {
+      "shot": "s02",
+      "text": "Nobody remembers who put it there.",
+      "card": null,
+      "start": 4.271,
+      "end": 6.329,
+      "next": 6.679
+    },
+    {
+      "shot": "s03",
+      "text": "Mine was two hundred and twelve.",
+      "card": null,
+      "start": 6.679,
+      "end": 8.6,
+      "next": 8.9
+    },
+    {
+      "shot": "s03",
+      "text": "Low.",
+      "card": null,
+      "start": 8.9,
+      "end": 9.485,
+      "next": 9.785
+    },
+    {
+      "shot": "s03",
+      "text": "Embarrassing.",
+      "card": null,
+      "start": 9.785,
+      "end": 10.66,
+      "next": 11.01
+    },
+    {
+      "shot": "s04",
+      "text": "The baker had nine.",
+      "card": null,
+      "start": 11.01,
+      "end": 12.287,
+      "next": 12.587
+    },
+    {
+      "shot": "s04",
+      "text": "Just nine.",
+      "card": null,
+      "start": 12.587,
+      "end": 13.534,
+      "next": 13.884
+    },
+    {
+      "shot": "s05",
+      "text": "But every morning, before anyone woke up,",
+      "card": null,
+      "start": 13.884,
+      "end": 16.517,
+      "next": 16.667
+    },
+    {
+      "shot": "s06",
+      "text": "she left bread on the doorsteps of houses with no lights on.",
+      "card": null,
+      "start": 16.667,
+      "end": 20.343,
+      "next": 20.693
+    },
+    {
+      "shot": "s07",
+      "text": "The guy with fifty thousand never said hi to anyone.",
+      "card": null,
+      "start": 20.693,
+      "end": 24.167,
+      "next": 24.517
+    },
+    {
+      "shot": "s08",
+      "text": "He was busy making his number go up.",
+      "card": null,
+      "start": 24.517,
+      "end": 26.758,
+      "next": 27.258
+    },
+    {
+      "shot": "s09",
+      "text": "So I did what everyone does.",
+      "card": null,
+      "start": 27.258,
+      "end": 29.09,
+      "next": 29.44
+    },
+    {
+      "shot": "s10",
+      "text": "I started performing.",
+      "card": null,
+      "start": 29.44,
+      "end": 30.744,
+      "next": 31.094
+    },
+    {
+      "shot": "s11",
+      "text": "Nine hundred.",
+      "card": null,
+      "start": 31.094,
+      "end": 32.08,
+      "next": 32.33
+    },
+    {
+      "shot": "s11",
+      "text": "Three thousand.",
+      "card": null,
+      "start": 32.33,
+      "end": 33.416,
+      "next": 33.666
+    },
+    {
+      "shot": "s11",
+      "text": "Ten thousand.",
+      "card": null,
+      "start": 33.666,
+      "end": 34.677,
+      "next": 35.177
+    },
+    {
+      "shot": "s12",
+      "text": "And the bigger it got, the fewer people actually knew my name.",
+      "card": null,
+      "start": 35.177,
+      "end": 38.804,
+      "next": 39.404
+    },
+    {
+      "shot": "s13",
+      "text": "One morning,",
+      "card": null,
+      "start": 39.404,
+      "end": 40.277,
+      "next": 40.677
+    },
+    {
+      "shot": "s13",
+      "text": "there was no bread.",
+      "card": null,
+      "start": 40.677,
+      "end": 41.816,
+      "next": 42.316
+    },
+    {
+      "shot": "s14",
+      "text": "The baker was sick.",
+      "card": null,
+      "start": 42.316,
+      "end": 43.551,
+      "next": 44.051
+    },
+    {
+      "shot": "s15",
+      "text": "And I realized no number in town could have told me that.",
+      "card": null,
+      "start": 44.051,
+      "end": 47.298,
+      "next": 47.798
+    },
+    {
+      "shot": "s16",
+      "text": "So I brought her bread.",
+      "card": null,
+      "start": 47.798,
+      "end": 49.089,
+      "next": 50.689
+    },
+    {
+      "shot": "s17",
+      "text": "My number didn't move.",
+      "card": null,
+      "start": 50.689,
+      "end": 52.185,
+      "next": 52.585
+    },
+    {
+      "shot": "s17",
+      "text": "Not even by one.",
+      "card": null,
+      "start": 52.585,
+      "end": 53.931,
+      "next": 54.931
+    },
+    {
+      "shot": "s18",
+      "text": "Turns out the number never measured what we thought.",
+      "card": null,
+      "start": 54.931,
+      "end": 57.905,
+      "next": 58.405
+    },
+    {
+      "shot": "s18",
+      "text": "It only measured who was watching.",
+      "card": null,
+      "start": 58.405,
+      "end": 60.407,
+      "next": 61.407
+    },
+    {
+      "shot": "card",
+      "text": "",
+      "card": null,
+      "start": 61.407,
+      "end": 64.407,
+      "next": 64.407
+    }
+  ],
+  "highlight": [
+    "two hundred and twelve",
+    "two",
+    "twelve",
+    "nine",
+    "fifty",
+    "hundred",
+    "three",
+    "ten",
+    "thousand"
+  ]
+}

@@ -1,0 +1,169 @@
+# The Old Town, as data (read by lib/oldtown.py; the plan page's map draws the same numbers).
+# Roblox-style plan coordinates in studs: x east, z south, so north (-z) points at the mountains.
+# `face` is the way a building's front looks: N (-z), S (+z), E (+x), W (-x).
+# `w` runs along the front, `d` front to back. Heights come from the terrain unless `y` is given.
+# Names the EP01 shots look up (Bakery, BakerHouse, House_1..4) keep their old positions.
+
+storey: 9            # studs per floor (an avatar is 5.46)
+plaster: [[244, 238, 226], [240, 224, 180], [236, 210, 150], [226, 200, 186], [222, 214, 196], [214, 188, 150]]
+shutters: [[74, 98, 72], [62, 88, 120], [120, 70, 50], [88, 74, 60], [70, 110, 110]]
+
+buildings:
+  # Bakery Lane, north side (fronts on z = -72, facing the lane)
+  - {name: Bakery,     kind: bakery, x: -75, z: -81, w: 26, d: 18, floors: 2, face: S, color: 0, shutters: 2}
+  - {name: Infill_W,   x: -59,  z: -81, w: 6,  d: 18, floors: 3, face: S, color: 3}
+  - {name: House_1,    x: -45,  z: -81, w: 22, d: 18, floors: 2, face: S, color: 1, shutters: 0, flowers: true}
+  - {name: Infill_1,   x: -30,  z: -81, w: 8,  d: 18, floors: 3, face: S, color: 4, roof: front}
+  - {name: House_2,    x: -15,  z: -81, w: 22, d: 18, floors: 2, face: S, color: 0, shutters: 1}
+  - {name: House_3,    x: 15,   z: -81, w: 22, d: 18, floors: 2, face: S, color: 2, shutters: 3, flowers: true}
+  - {name: Infill_2,   x: 30,   z: -81, w: 8,  d: 18, floors: 3, face: S, color: 5, roof: front}
+  - {name: House_4,    x: 45,   z: -81, w: 22, d: 18, floors: 2, face: S, color: 3, shutters: 4}
+  - {name: Infill_3,   x: 60.5, z: -81, w: 9,  d: 18, floors: 2, face: S, color: 1}
+  - {name: BakerHouse, x: 75,   z: -81, w: 20, d: 18, floors: 2, face: S, color: 4, shutters: 0, flowers: true}
+  # Bakery Lane, south side (fronts on z = -50, backs to the square)
+  - {name: Lane_S1, x: -84, z: -41, w: 20, d: 18, floors: 2, face: N, color: 2, shutters: 1}
+  - {name: Lane_S2, x: -62, z: -41, w: 22, d: 18, floors: 3, face: N, color: 0, shutters: 4}
+  - {name: Lane_S3, x: -40, z: -41, w: 20, d: 18, floors: 2, face: N, color: 5, shutters: 0, roof: front}
+  - {name: Lane_S4, x: -19, z: -41, w: 20, d: 18, floors: 2, face: N, color: 1, shutters: 2}
+  - {name: Lane_S5, x: 19,  z: -41, w: 20, d: 18, floors: 2, face: N, color: 3, shutters: 3}
+  - {name: Lane_S6, x: 40,  z: -41, w: 20, d: 18, floors: 3, face: N, color: 0, shutters: 0, roof: front}
+  - {name: Lane_S7, x: 62,  z: -41, w: 22, d: 18, floors: 2, face: N, color: 4, shutters: 1}
+  - {name: Lane_S8, x: 84,  z: -41, w: 20, d: 18, floors: 2, face: N, color: 2, shutters: 4}
+  # Town Square: shops east and south, Town Hall west
+  - {name: Shop_E1,  x: 57,  z: -18, w: 18, d: 18, floors: 2, face: W, color: 1, shutters: 0, awning: [150, 60, 50]}
+  - {name: Shop_E2,  x: 57,  z: 20,  w: 18, d: 18, floors: 3, face: W, color: 0, shutters: 2, awning: [60, 90, 70]}
+  - {name: Shop_E3,  x: 57,  z: 40,  w: 14, d: 18, floors: 2, face: W, color: 5, shutters: 1}
+  - {name: Shop_S1,  x: -32, z: 57,  w: 20, d: 18, floors: 2, face: N, color: 2, shutters: 3, awning: [200, 160, 60]}
+  - {name: Shop_S2,  x: -12, z: 57,  w: 16, d: 18, floors: 3, face: N, color: 4, shutters: 0, roof: front}
+  - {name: Shop_S3,  x: 12,  z: 57,  w: 16, d: 18, floors: 2, face: N, color: 0, shutters: 1}
+  - {name: Shop_S4,  x: 32,  z: 57,  w: 20, d: 18, floors: 2, face: N, color: 3, shutters: 2, awning: [70, 80, 130]}
+  - {name: TownHall, kind: townhall, x: -66, z: 8, w: 40, d: 30, floors: 3, face: E, color: 0}
+  # Church Hill and Castle Ridge
+  - {name: Church, kind: church, x: 0, z: -140, w: 26, d: 46, face: S}
+  - {name: Keep,   kind: keep,   x: -82, z: -238, w: 26, d: 26, face: S}
+  - {name: Belfry, kind: tower,  x: -50, z: -230, w: 14, d: 14, face: S}
+  # Hero's Lane and the school (shells; their interiors are later episodes)
+  - {name: HeroHouse, x: 122, z: 118, w: 22, d: 20, floors: 2, face: N, color: 1, shutters: 1, flowers: true}
+  - {name: Hero_N1,   x: 96,  z: 120, w: 18, d: 18, floors: 2, face: N, color: 3, shutters: 0}
+  - {name: Hero_N2,   x: 148, z: 120, w: 18, d: 18, floors: 2, face: N, color: 0, shutters: 4}
+  - {name: Hero_S1,   x: 96,  z: 152, w: 18, d: 18, floors: 2, face: N, color: 5, shutters: 2}
+  - {name: Hero_S2,   x: 148, z: 152, w: 18, d: 18, floors: 2, face: N, color: 2, shutters: 3}
+  - {name: School,    x: -90, z: 110, w: 54, d: 28, floors: 2, face: N, color: 2, shutters: 1}
+  # Wooden Quarter
+  - {name: Log_1, kind: log, x: -195, z: -55, w: 16, d: 14, face: E}
+  - {name: Log_2, kind: log, x: -160, z: -50, w: 14, d: 14, face: W}
+  - {name: Log_3, kind: log, x: -195, z: -15, w: 18, d: 14, face: E}
+  - {name: Log_4, kind: log, x: -160, z: -12, w: 14, d: 12, face: W}
+  - {name: Log_5, kind: log, x: -190, z: 28,  w: 16, d: 14, face: E}
+  - {name: Log_6, kind: log, x: -158, z: 30,  w: 14, d: 14, face: W}
+
+grounds:  # cobbles / gravel / planks: [name, kind, x0, z0, x1, z1, top]
+  - [Lane,      cobble, -100, -72, 100, -50, 0.55]
+  - [Sidewalk,  cobble, -100, -72, 100, -62, 0.9]
+  - [Alley,     cobble, -4,   -90, 4,   -72, 0.55]
+  - [Passage,   cobble, -9,   -50, 9,   -30, 0.55]
+  - [Square,    cobble, -48,  -30, 48,  48,  0.55]
+  - [ParkGate,  cobble, 48,   -9,  76,  11,  0.55]
+  - [WestRoad,  cobble, -140, -22, -48, -14, 0.55]
+  - [HeroLane,  gravel, 84,   128, 160, 142, 0.3]
+  - [ParkPath,  gravel, 76,   -2,  170, 6,   0.3]
+  - [BandPath,  gravel, 114,  6,   122, 60,  0.3]
+  - [Planks,    planks, -182, -70, -174, 52, 0.6]
+  - [BridgeRd,  cobble, -216, -9,  -140, -1, 0.55]
+
+stairs:  # church stair alley: from the lane up to the plateau
+  - {x: 0, z0: -90, z1: -112, w: 8, rise: 12}
+
+hills:   # terrain bumps: plateau radius r0 (flat top), fades to 0 by r1; sx/sz stretch it
+  - {name: ChurchHill, x: 0,   z: -140, h: 12, r0: 30, r1: 52}
+  - {name: CastleRidge, x: -70, z: -232, h: 40, r0: 34, r1: 95, sx: 1.7, sz: 0.8}
+river: {x: -235, width: 18, depth: 4}
+
+trees:   # [kind, x, z] (+ optional scale)
+  square:     [[linden, -40, -24], [linden, 40, -24], [linden, -40, 42, 1.1], [linden, 40, 42], [linden, -24, 44, 0.8], [linden, 24, 44, 0.85]]
+  lane:       [[small, -52, -52.5], [small, 22, -52.5], [small, 66, -52.5]]
+  churchyard: [[cypress, -24, -152], [cypress, -24, -124], [cypress, 24, -152], [cypress, 24, -124], [oak, 32, -110, 1.1]]
+  orchard:    [[fruit, -96, -108], [fruit, -82, -108], [fruit, -68, -108], [fruit, -54, -108], [fruit, -91, -122], [fruit, -77, -122], [fruit, -63, -122], [fruit, -49, -122]]
+  park:       [[linden, 80, -15], [oak, 100, -18], [linden, 125, -18], [oak, 150, -15], [linden, 165, 5], [oak, 166, 30], [linden, 164, 55], [oak, 80, 22], [linden, 78, 40], [oak, 80, 60], [linden, 100, 66], [oak, 140, 66], [linden, 98, 10, 0.9], [oak, 140, 8, 0.9]]
+  willows:    [[willow, 160, 60], [willow, 168, 34]]
+  herolane:   [[small, 108, 104], [small, 136, 104], [small, 108, 136], [small, 136, 136]]
+  school:     [[oak, -125, 96], [linden, -125, 122], [oak, -58, 128]]
+  wooden:     [[birch, -178, -78], [birch, -210, -30], [birch, -172, 8], [birch, -212, 10], [birch, -168, 50], [birch, -205, 50]]
+
+scatter:  # Geometry Nodes forest: density per 1000 sq studs inside each band, by kind
+  ridge:  {kinds: [cypress, pine], count: 34, x: -70, z: -232, rx: 110, rz: 50}
+  forest: {kinds: [oak, pine, birch, linden], count: 420}
+  hills:  {kinds: [far], count: 2200}
+
+props:
+  fountain: [0, 0]
+  benches:  [[-26, -18, 45], [26, -18, -45], [-26, 18, 135], [26, 18, -135], [96, 30, 90], [140, 30, -90]]
+  stalls:   [[-26, 32, [190, 70, 60]], [-12, 34, [220, 190, 120]], [26, 32, [90, 120, 80]]]
+  lanterns: [[-60, -71.8], [-30, -71.8], [-8, -71.8], [22, -71.8], [60, -71.8], [-72, -50.2], [-30, -50.2], [30, -50.2], [72, -50.2]]
+  lamps:    [[-46, -28], [46, -28], [-46, 46], [46, 46], [76, -10], [76, 12], [104, 2], [134, 2], [162, 2]]
+  bandstand: [118, 25]
+  pond:     [145, 46, 14, 9]
+  well:     [-178, -30]
+  hedges:   [[88, -8, 30, 3], [88, 64, 30, 3], [168, 20, 3, 30]]
+
+details:  # the lived-in layer (lib/oldtown.py build_details)
+  pots:   # [x, z, size]: by the lane doors, round the square, the town hall steps, the park gate
+    - [-49.6, -70.6]
+    - [-40.4, -70.6, 0.8]
+    - [-19.6, -70.6]
+    - [-10.4, -70.6, 1.2]
+    - [10.4, -70.6, 0.9]
+    - [19.6, -70.6]
+    - [40.4, -70.6]
+    - [49.6, -70.6, 0.8]
+    - [70.4, -70.6]
+    - [79.6, -70.6, 1.1]
+    - [-68, -70.6, 0.8]
+    - [-56, -51.5]
+    - [-24, -51.5, 0.9]
+    - [26, -51.5]
+    - [54, -51.5, 1.2]
+    - [-44, -26, 1.3]
+    - [44, -26, 1.3]
+    - [-44, 44, 1.3]
+    - [44, 44, 1.3]
+    - [-49, -4, 1.1]
+    - [-49, 20, 1.1]
+    - [46.5, -12]
+    - [46.5, 26, 0.9]
+    - [-30, 46.5]
+    - [10, 46.5, 1.1]
+    - [30, 46.5, 0.9]
+    - [74, -11, 1.4]
+    - [74, 13, 1.4]
+    - [112, 10, 1.0]
+    - [124, 10, 1.0]
+  bikes:  # [x, z, heading degrees]: leaning on walls and by the square
+    - [-27, -71.2, 0]
+    - [33, -71.2, 180]
+    - [-64, -50.8, 0]
+    - [47, 4, 90]
+    - [-36, 47, 0]
+    - [78, -2, 90]
+  hang_signs:   # building: text, on a bracket over the street
+    Shop_E1: CAFÉ
+    Shop_E2: BOOKS
+    Shop_E3: TAILOR
+    Shop_S1: FLOWERS
+    Shop_S3: CHEESE
+    Lane_S2: INN
+    Lane_S6: SHOES
+    House_3: CLOCKS
+  wall_signs:   # building: lettering above the door
+    TownHall: TOWN HALL
+    Shop_S2: POST
+    Shop_S4: PHARMACY
+  lamps:  # extra street lamps along the lane and the roads out
+    - [-90, -51.5]
+    - [-35, -51.5]
+    - [35, -51.5]
+    - [90, -51.5]
+    - [-120, -12]
+    - [-170, -12]
+    - [0, 75]
+    - [0, 110]

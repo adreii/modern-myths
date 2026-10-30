@@ -1,0 +1,89 @@
+# Everyday Myths, EP01: "Everyone Has a Number"
+# From ep01-narration-script.md. Each line is spoken by the TTS voice and shown as captions.
+# `shot` names a function in shots.py (s01-s18, one per row of ep01-shot-list.md);
+# consecutive lines with the same shot share one camera setup. The "/" beats in the
+# narration script are separate lines with a short `pause`.
+# When your own recording is ready, it replaces voice.wav and the timing is remeasured.
+
+title: Everyone Has a Number
+essay: after Roland Barthes, Mythologies (1957)
+voice: am_michael      # Kokoro voice (try: am_puck, am_fenrir, af_heart, bf_emma)
+speed: 0.95            # calm, a little wry: about 150 words a minute
+style: brick
+engine: CYCLES       # final renders are Cycles (Lens Optics cameras on s01, s18 need it)
+pause: 0.35            # default gap between lines
+highlight: [two hundred and twelve, two, twelve, nine, fifty, hundred, three, ten, thousand]  # number words, yellow in captions
+
+lines:
+  - shot: s01
+    say: In my town, everyone has a number floating over their head.
+  - shot: s02
+    say: Nobody remembers who put it there.
+  - shot: s03
+    say: Mine was two hundred and twelve.
+    pause: 0.3
+  - shot: s03
+    say: Low.
+    pause: 0.3
+  - shot: s03
+    say: Embarrassing.
+  - shot: s04
+    say: The baker had nine.
+    pause: 0.3
+  - shot: s04
+    say: Just nine.
+  - shot: s05
+    say: But every morning, before anyone woke up,
+    pause: 0.15
+  - shot: s06
+    say: she left bread on the doorsteps of houses with no lights on.
+  - shot: s07
+    say: The guy with fifty thousand never said hi to anyone.
+  - shot: s08
+    say: He was busy making his number go up.
+    pause: 0.5
+  - shot: s09
+    say: So I did what everyone does.
+  - shot: s10
+    say: I started performing.
+  - shot: s11
+    say: Nine hundred.
+    pause: 0.25
+  - shot: s11
+    say: Three thousand.
+    pause: 0.25
+  - shot: s11
+    say: Ten thousand.
+    pause: 0.5
+  - shot: s12
+    say: And the bigger it got, the fewer people actually knew my name.
+    pause: 0.6
+  - shot: s13
+    say: One morning,
+    pause: 0.4
+  - shot: s13
+    say: there was no bread.
+    pause: 0.5
+  - shot: s14
+    say: The baker was sick.
+    pause: 0.5
+  - shot: s15
+    say: And I realized no number in town could have told me that.
+    pause: 0.5
+  - shot: s16
+    say: So I brought her bread.
+    pause: 1.6         # let the picture carry the hand-off
+  - shot: s17
+    say: My number didn't move.
+    pause: 0.4
+  - shot: s17
+    say: Not even by one.
+    pause: 1.0
+  - shot: s18
+    say: Turns out the number never measured what we thought.
+    pause: 0.5
+  - shot: s18
+    say: It only measured who was watching.
+    pause: 1.0
+  - shot: card         # the town holds clean, no text (question and Barthes credit go in the description)
+    hold: 3.0
